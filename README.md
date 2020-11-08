@@ -18,6 +18,11 @@ Note: the directories need to be adjacent in order to work as is. If not you wil
 
 If you have `node` and `yarn`, on Linux you should be able to just copy the following and paste it into your terminal.
 ``` bash
+# Make sure GOROOT and GOPATH are set in the terminal, for example:
+export GOROOT=`go env GOROOT`
+export GOPATH=`go env GOPATH`
+
+# Get the plugin
 mkdir -p ~/src/wasm_test
 cd ~/src/wasm_test
 git clone https://github.com/happybeing/webpack-golang-wasm-async-loader
@@ -25,11 +30,16 @@ cd webpack-golang-wasm-async-loader
 npm install && npm run build
 yarn link
 
+# Get the app template
+cd ~/src/wasm_test
 git clone https://github.com/happybeing/svelte-go-wasm-webpack svelte-go-app
 cd  svelte-go-app
 yarn link golang-wasm-async-loader
 yarn && yarn build
+
+# If all looks good, start the app
 yarn dev
+# Open app in the browser by visiting localhost:5000
 ```
 Note that the plugin directory and its package name are different, so you need to use the `yarn link` command as shown.
 
